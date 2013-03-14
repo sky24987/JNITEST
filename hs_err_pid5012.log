@@ -1,0 +1,150 @@
+#
+# An unexpected error has been detected by Java Runtime Environment:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x7c95a5c4, pid=5012, tid=5408
+#
+# Java VM: Java HotSpot(TM) Client VM (10.0-b22 mixed mode, sharing windows-x86)
+# Problematic frame:
+# C  [ntdll.dll+0x2a5c4]
+#
+# If you would like to submit a bug report, please visit:
+#   http://java.sun.com/webapps/bugreport/crash.jsp
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x02aa1c00):  JavaThread "Finalizer" daemon [_thread_in_native, id=5408, stack(0x02c20000,0x02c70000)]
+
+siginfo: ExceptionCode=0xc0000005, reading address 0x00000000
+
+Registers:
+EAX=0x02e214b0, EBX=0x02e00000, ECX=0x00000000, EDX=0x00000000
+ESP=0x02c6f56c, EBP=0x02c6f578, ESI=0x02e214a8, EDI=0x02e06320
+EIP=0x7c95a5c4, EFLAGS=0x00010246
+
+Top of Stack: (sp=0x02c6f56c)
+0x02c6f56c:   02e00000 02e06320 00000000 02c6f660
+0x02c6f57c:   7c95a69b 02e00000 00000000 02c6f640
+0x02c6f58c:   00000000 02aa1c00 02e06328 00000000
+0x02c6f59c:   02c6f9a0 02e06340 0000000e 02e06348
+0x02c6f5ac:   00000000 02e00178 00000000 00000004
+0x02c6f5bc:   6d83d4f3 02e0d000 02aa229c 02e06368
+0x02c6f5cc:   02aa2201 00000004 6d8f2e55 02e00188
+0x02c6f5dc:   02e0d008 00000000 02e063d8 00000005 
+
+Instructions: (pc=0x7c95a5c4)
+0x7c95a5b4:   85 02 0f 00 00 8b 4e 0c 8d 46 08 8b 10 89 4d 0c
+0x7c95a5c4:   8b 09 3b 4a 04 89 55 14 0f 85 f5 72 01 00 3b c8 
+
+
+Stack: [0x02c20000,0x02c70000],  sp=0x02c6f56c,  free space=317k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [ntdll.dll+0x2a5c4]
+C  [ntdll.dll+0x2a69b]
+C  [msvcrt.dll+0x1cef6]
+C  [jna39807.dll+0x6f01]
+J  com.sun.jna.Native.free(J)V
+J  com.sun.jna.Memory.dispose()V
+J  com.sun.jna.Memory.finalize()V
+v  ~BufferBlob::StubRoutines (1)
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+J  com.sun.jna.Native.free(J)V
+J  com.sun.jna.Memory.dispose()V
+J  com.sun.jna.Memory.finalize()V
+v  ~BufferBlob::StubRoutines (1)
+J  java.lang.ref.Finalizer.invokeFinalizeMethod(Ljava/lang/Object;)V
+J  java.lang.ref.Finalizer.runFinalizer()V
+J  java.lang.ref.Finalizer$FinalizerThread.run()V
+v  ~BufferBlob::StubRoutines (1)
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x003f5c00 JavaThread "DestroyJavaVM" [_thread_blocked, id=2780, stack(0x008c0000,0x00910000)]
+  0x02aea000 JavaThread "Low Memory Detector" daemon [_thread_blocked, id=5484, stack(0x02d60000,0x02db0000)]
+  0x02ae7400 JavaThread "CompilerThread0" daemon [_thread_blocked, id=4808, stack(0x02d10000,0x02d60000)]
+  0x02ae2c00 JavaThread "Attach Listener" daemon [_thread_blocked, id=5480, stack(0x02cc0000,0x02d10000)]
+  0x02aed800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=4760, stack(0x02c70000,0x02cc0000)]
+=>0x02aa1c00 JavaThread "Finalizer" daemon [_thread_in_native, id=5408, stack(0x02c20000,0x02c70000)]
+  0x02a9d400 JavaThread "Reference Handler" daemon [_thread_blocked, id=5336, stack(0x02bd0000,0x02c20000)]
+
+Other Threads:
+  0x02a9c400 VMThread [stack: 0x02b80000,0x02bd0000] [id=4956]
+  0x02af6400 WatcherThread [stack: 0x02db0000,0x02e00000] [id=3412]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ def new generation   total 960K, used 54K [0x229c0000, 0x22ac0000, 0x22ea0000)
+  eden space 896K,   6% used [0x229c0000, 0x229cdb68, 0x22aa0000)
+  from space 64K,   0% used [0x22ab0000, 0x22ab0000, 0x22ac0000)
+  to   space 64K,   0% used [0x22aa0000, 0x22aa0000, 0x22ab0000)
+ tenured generation   total 6244K, used 3744K [0x22ea0000, 0x234b9000, 0x269c0000)
+   the space 6244K,  59% used [0x22ea0000, 0x23248080, 0x23248200, 0x234b9000)
+ compacting perm gen  total 12288K, used 753K [0x269c0000, 0x275c0000, 0x2a9c0000)
+   the space 12288K,   6% used [0x269c0000, 0x26a7c750, 0x26a7c800, 0x275c0000)
+    ro space 8192K,  62% used [0x2a9c0000, 0x2aec2a60, 0x2aec2c00, 0x2b1c0000)
+    rw space 12288K,  52% used [0x2b1c0000, 0x2b8086e0, 0x2b808800, 0x2bdc0000)
+
+Dynamic libraries:
+0x00400000 - 0x00423000 	D:\Program Files\Java\jre1.6.0_06\bin\javaw.exe
+0x7c930000 - 0x7ca03000 	C:\WINDOWS\system32\ntdll.dll
+0x7c800000 - 0x7c92b000 	C:\WINDOWS\system32\kernel32.dll
+0x77f30000 - 0x77fdb000 	C:\WINDOWS\system32\ADVAPI32.dll
+0x77c20000 - 0x77cc0000 	C:\WINDOWS\system32\RPCRT4.dll
+0x76eb0000 - 0x76ec3000 	C:\WINDOWS\system32\Secur32.dll
+0x77e10000 - 0x77ea0000 	C:\WINDOWS\system32\USER32.dll
+0x77bd0000 - 0x77c19000 	C:\WINDOWS\system32\GDI32.dll
+0x76180000 - 0x7619d000 	C:\WINDOWS\system32\IMM32.DLL
+0x7f000000 - 0x7f009000 	C:\WINDOWS\system32\LPK.DLL
+0x74ae0000 - 0x74b45000 	C:\WINDOWS\system32\USP10.dll
+0x7c340000 - 0x7c396000 	D:\Program Files\Java\jre1.6.0_06\bin\msvcr71.dll
+0x6d7c0000 - 0x6da10000 	D:\Program Files\Java\jre1.6.0_06\bin\client\jvm.dll
+0x769e0000 - 0x76a0a000 	C:\WINDOWS\system32\WINMM.dll
+0x6d270000 - 0x6d278000 	D:\Program Files\Java\jre1.6.0_06\bin\hpi.dll
+0x76ab0000 - 0x76abb000 	C:\WINDOWS\system32\PSAPI.DLL
+0x6d770000 - 0x6d77c000 	D:\Program Files\Java\jre1.6.0_06\bin\verify.dll
+0x6d310000 - 0x6d32f000 	D:\Program Files\Java\jre1.6.0_06\bin\java.dll
+0x6d7b0000 - 0x6d7bf000 	D:\Program Files\Java\jre1.6.0_06\bin\zip.dll
+0x6d000000 - 0x6d12e000 	D:\Program Files\Java\jre1.6.0_06\bin\awt.dll
+0x72f40000 - 0x72f67000 	C:\WINDOWS\system32\WINSPOOL.DRV
+0x77b70000 - 0x77bca000 	C:\WINDOWS\system32\msvcrt.dll
+0x774b0000 - 0x775e9000 	C:\WINDOWS\system32\ole32.dll
+0x10000000 - 0x1003d000 	C:\Documents and Settings\Administrator\Local Settings\Temp\jna-Administrator\jna39807.dll
+0x03270000 - 0x03299000 	D:\workspace\JNITest\TndGetComData.dll
+0x77370000 - 0x77407000 	C:\WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_5.82.3790.4770_x-ww_A689AB02\COMCTL32.dll
+0x77eb0000 - 0x77f02000 	C:\WINDOWS\system32\SHLWAPI.dll
+0x775f0000 - 0x7767b000 	C:\WINDOWS\system32\OLEAUT32.dll
+
+VM Arguments:
+jvm_args: -Dfile.encoding=GBK 
+java_command: com.zhanghan.app.JNITest
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=D:\Program Files\Java\jdk1.6.0_35
+PATH=D:/Program Files/Java/jre6/bin/client;D:/Program Files/Java/jre6/bin;D:/Program Files/Java/jre6/lib/i386;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\Microsoft SQL Server\80\Tools\BINN;D:\Program Files\TortoiseSVN\bin;C:\Program Files\nodejs\;D:\path\grails-2.1.0\\bin\;D:\path\gradle-1.1\\bin\;;D:\Program Files\Mercurial;C:\Sun\jwsdp-2.0\jwsdp-shared\bin;D:\Program Files\Java\jdk1.6.0_35\bin;D:\Program Files\apache-maven-3.0.4\bin;C:\Documents and Settings\Administrator\Application Data\npm\;D:\Program Files\SSH Communications Security\SSH Secure Shell;D:\path\grails-2.1.0\\bin\;D:\path\gradle-1.1\\bin\;D:\Android\android-sdk\tools;D:\Android\android-sdk\platform-tools;D:\Program Files\eclipse\eclipse;
+USERNAME=Administrator
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=x86 Family 6 Model 23 Stepping 10, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows Server 2003 family Build 3790 Service Pack 2
+
+CPU:total 2 (2 cores per cpu, 1 threads per core) family 6 model 7 stepping 10, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3
+
+Memory: 4k page, physical 2061308k(312104k free), swap 4005600k(2075856k free)
+
+vm_info: Java HotSpot(TM) Client VM (10.0-b22) for windows-x86 JRE (1.6.0_06-b02), built on Mar 25 2008 01:22:05 by "java_re" with MS VC++ 7.1
+
+time: Tue Nov 20 16:44:51 2012
+elapsed time: 0 seconds
+
