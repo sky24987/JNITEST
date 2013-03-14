@@ -23,6 +23,8 @@ public class JNITest {
 			if(b){
 				System.out.println(b);
 				try {
+					
+					
 					System.out.println("ÄÚÈÝ:"+new String(bt,"gbk"));
 				} catch (UnsupportedEncodingException e) {
 					// TODO Auto-generated catch block
